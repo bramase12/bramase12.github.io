@@ -1,0 +1,199 @@
+/* Global styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    opacity: 0; /* Initial opacity for fade-in */
+    animation: fadeInBody 1s forwards; /* Fade-in effect */
+}
+
+/* Animasi fade-in untuk seluruh halaman */
+@keyframes fadeInBody {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Header styling */
+header {
+    background-color: #0e0e0e;
+    color: white;
+    padding: 1rem 0;
+}
+
+/* Nav styling */
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+}
+
+nav ul li {
+    margin: 0 1rem;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Section styling */
+section {
+    padding: 2rem;
+    opacity: 0;
+    transform: translateY(20px); /* Initial position for animation */
+    animation: fadeInSection 1s ease-out forwards;
+    animation-delay: 0.3s; /* Delay for smooth transition */
+}
+
+/* Home section */
+#home {
+    background-color: #3f3f3f; /* Ganti dengan path gambar */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 50;
+    color: #f9f9f9;
+    text-align: center;
+    padding: 100px 20px;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    opacity: 0;
+    animation: fadeInSection 1s ease-out forwards;
+}
+
+@keyframes fadeInSection {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#home h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1px;
+}
+
+#home p {
+    font-size: 1rem;
+}
+
+/* Projects section */
+#projects {
+    background-color: #f9f9f9;
+}
+
+.project-grid {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.project {
+    border: 1px solid #ddd;
+    padding: 1rem;
+    margin: 1rem;
+    width: 30%;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: scale(0.9);
+    animation: fadeInProject 0.8s ease-out forwards;
+    animation-delay: 0.5s; /* Delay to create staggered effect */
+}
+
+@keyframes fadeInProject {
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Contact section */
+#contact {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInSection 1s ease-out forwards;
+    animation-delay: 0.6s;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Form styling */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 5px;
+    font-size: 16px;
+    color: #333;
+}
+
+input, textarea {
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input:focus, textarea:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+textarea {
+    resize: vertical;
+    height: 150px;
+}
+
+/* Button styling */
+button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background-color: #333;
+    color: white;
+}
+#about {
+    text-align: center;
+}
+#about p {
+    text-spacing-trim: 1.5rem;
+    font-size: 1.2rem;
+}
+
+footer p a {
+    text-decoration: none;
+    color: white;
+}
