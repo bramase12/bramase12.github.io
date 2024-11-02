@@ -20,20 +20,21 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
         return;
     }
 
-    // Kirim email menggunakan EmailJS
-    emailjs.send("service_yuzpfnl", "template_7frlw6a", {
+    // Kirim email menggunakan EmailJS dengan template yang sesuai
+    const templateParams = {
         to_name: 'bramasetio',
-        name: name,
         email: email,
+        name: name,
         message: message
-    }, "E5IibMRg2oZwbneWj")
+    };
+
+    emailjs.send("service_yuzpfnl", "template_7frlw6a", templateParams, "E5IibMRg2oZwbneWj")
     .then(function(response) {
         alert('Message sent successfully!');
         console.log('SUCCESS!', response.status, response.text);
+        document.getElementById('contact-form').reset();
     }, function(error) {
         alert('Failed to send message. Please try again later.');
         console.log('FAILED...', error);
     });
-
-    this.reset(); 
 });
