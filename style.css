@@ -20,6 +20,10 @@ header {
     background-color: #0e0e0e;
     color: white;
     padding: 1rem 0;
+    position: fixed; /* Menambahkan properti ini */
+    top: 0; /* Menentukan posisi tetap di atas */
+    width: 100%; /* Mengatur lebar header agar penuh */
+    z-index: 1000; /* Menentukan lapisan agar header tetap di atas konten lain */
 }
 
 /* Nav styling */
@@ -50,11 +54,11 @@ section {
 
 /* Home section */
 #home {
-    background-color: #3f3f3f; /* Ganti dengan path gambar */
+    position: relative; /* Tambahkan posisi relatif */
+    background-image: url(ocean-car-floating-full-moon-scenery-digital-art-hd-wallpaper-uhdpaper.com-664@0@j.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 50;
     color: #f9f9f9;
     text-align: center;
     padding: 100px 20px;
@@ -66,6 +70,22 @@ section {
     animation: fadeInSection 1s ease-out forwards;
 }
 
+#home::before {
+    content: ""; 
+    position: absolute; 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); 
+    z-index: 1; 
+}
+
+#home h1, #home p { 
+    position: relative;
+    z-index: 2; 
+}
+
 @keyframes fadeInSection {
     to {
         opacity: 1;
@@ -74,12 +94,12 @@ section {
 }
 
 #home h1 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     margin-bottom: 1px;
 }
 
 #home p {
-    font-size: 1rem;
+    font-size: 1.6rem;
 }
 
 /* Projects section */

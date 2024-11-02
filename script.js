@@ -1,16 +1,8 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('nav ul li a').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
+function validateEmail(email) {
+    const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
 
-        const targetSection = document.querySelector(this.getAttribute('href'));
-        targetSection.scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-
-// Form validation
 document.getElementById('contact-form').addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -28,13 +20,20 @@ document.getElementById('contact-form').addEventListener('submit', function (e) 
         return;
     }
 
-    alert('Message sent successfully!');
-    // You can add additional actions here, like sending data to the server
-    this.reset();  // Reset the form after submission
-});
+    // Kirim email menggunakan EmailJS
+    emailjs.send("service_yuzpfnl", "template_7frlw6a", {
+        to_name: 'bramasetio',
+        name: name,
+        email: email,
+        message: message
+    }, "E5IibMRg2oZwbneWj")
+    .then(function(response) {
+        alert('Message sent successfully!');
+        console.log('SUCCESS!', response.status, response.text);
+    }, function(error) {
+        alert('Failed to send message. Please try again later.');
+        console.log('FAILED...', error);
+    });
 
-// Email validation function
-function validateEmail(email) {
-    const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-    return re.test(String(email).toLowerCase());
-}
+    this.reset(); 
+});
