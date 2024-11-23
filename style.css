@@ -19,7 +19,8 @@ body {
 header {
     background-color: #0e0e0e;
     color: white;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
+    margin-bottom: 20px;
     position: fixed; /* Menambahkan properti ini */
     top: 0; /* Menentukan posisi tetap di atas */
     width: 100%; /* Mengatur lebar header agar penuh */
@@ -45,7 +46,7 @@ nav ul li a {
 
 /* Section styling */
 section {
-    padding: 2rem;
+    padding: 60px 0;
     opacity: 0;
     transform: translateY(20px); /* Initial position for animation */
     animation: fadeInSection 1s ease-out forwards;
@@ -59,10 +60,10 @@ section {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    color: #f9f9f9;
+    color: #535353;
     text-align: center;
     padding: 100px 20px;
-    height: 10vh;
+    height: 20vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -205,6 +206,9 @@ footer {
     padding: 1rem 0;
     background-color: #333;
     color: white;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 #about {
     text-align: center;
