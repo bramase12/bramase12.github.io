@@ -3,652 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Bramasetio | Game Developer Portfolio</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --black: #000;
-            --dark: #0a0a0a;
-            --darker: #111;
-            --gray: #1a1a1a;
-            --light-gray: #333;
-            --white: #fff;
-            --accent: #f0f0f0;
-            --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-            --glass: rgba(15, 15, 15, 0.7);
-            --border: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        body {
-            font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
-            background: var(--black);
-            color: var(--white);
-            line-height: 1.7;
-            overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(40, 40, 40, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(50, 50, 50, 0.1) 0%, transparent 20%);
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
-
-        /* Typography */
-        h1, h2, h3, h4 {
-            font-weight: 700;
-            line-height: 1.2;
-        }
-
-        h1 {
-            font-size: 4.5rem;
-            margin-bottom: 20px;
-            background: linear-gradient(to right, #fff, #aaa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -0.03em;
-        }
-
-        h2 {
-            font-size: 2.8rem;
-            margin-bottom: 60px;
-            position: relative;
-            display: inline-block;
-        }
-
-        h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--white);
-        }
-
-        p {
-            margin-bottom: 25px;
-            color: var(--accent);
-            font-weight: 300;
-            font-size: 1.1rem;
-        }
-
-        /* Header & Navigation */
-        header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-            padding: 25px 0;
-            transition: var(--transition);
-            backdrop-filter: blur(10px);
-            background: var(--glass);
-            border-bottom: var(--border);
-        }
-
-        .header-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: 800;
-            text-decoration: none;
-            color: var(--white);
-            display: flex;
-            align-items: center;
-        }
-
-        .logo span {
-            color: #999;
-            font-weight: 300;
-            margin-left: 5px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-        }
-
-        nav ul li {
-            margin-left: 35px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: var(--accent);
-            font-weight: 500;
-            font-size: 1.1rem;
-            position: relative;
-            transition: var(--transition);
-            padding: 8px 0;
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--white);
-            transition: var(--transition);
-        }
-
-        nav ul li a:hover {
-            color: var(--white);
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.8rem;
-            cursor: pointer;
-            color: var(--white);
-            z-index: 1100;
-        }
-
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding-top: 80px;
-        }
-
-        .hero-content {
-            max-width: 700px;
-            z-index: 2;
-            position: relative;
-        }
-
-        .hero h1 span {
-            display: block;
-            margin-top: 10px;
-            font-size: 1.8rem;
-            font-weight: 400;
-            background: linear-gradient(to right, #aaa, #777);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 40px;
-            max-width: 600px;
-            line-height: 1.8;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 18px 42px;
-            background: transparent;
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 600;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            transition: var(--transition);
-            cursor: pointer;
-            margin-right: 20px;
-            margin-top: 15px;
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0;
-            height: 100%;
-            background: rgba(255, 255, 255, 0.1);
-            transition: var(--transition);
-            z-index: -1;
-        }
-
-        .btn:hover {
-            border-color: rgba(255, 255, 255, 0.4);
-            transform: translateY(-5px);
-        }
-
-        .btn:hover::before {
-            width: 100%;
-        }
-
-        .btn i {
-            margin-left: 10px;
-            transition: var(--transition);
-        }
-
-        .btn:hover i {
-            transform: translateX(5px);
-        }
-
-        .hero-stats {
-            display: flex;
-            margin-top: 60px;
-            gap: 40px;
-        }
-
-        .stat-item {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: #aaa;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* About Section */
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-text {
-            position: relative;
-        }
-
-        .about-img {
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            transform: perspective(1000px) rotateY(-5deg);
-            transition: var(--transition);
-        }
-
-        .about-img:hover {
-            transform: perspective(1000px) rotateY(0deg);
-        }
-
-        .about-img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition);
-        }
-
-        .skills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-top: 30px;
-        }
-
-        .skill {
-            background: var(--gray);
-            padding: 10px 20px;
-            border-radius: 50px;
-            font-size: 0.95rem;
-            border: var(--border);
-            transition: var(--transition);
-        }
-
-        .skill:hover {
-            background: var(--light-gray);
-            transform: translateY(-3px);
-        }
-
-        /* Portfolio Section */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 30px;
-        }
-
-        .portfolio-item {
-            position: relative;
-            overflow: hidden;
-            border-radius: 15px;
-            transition: var(--transition);
-            height: 490px;
-            border: var(--border);
-            background: var(--darker);
-            box-shadow: var(--shadow);
-        }
-
-        .portfolio-img {
-            height: 250px;
-            overflow: hidden;
-        }
-
-        .portfolio-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: var(--transition);
-        }
-
-        .portfolio-content {
-            padding: 25px;
-        }
-
-        .portfolio-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-
-        .portfolio-content p {
-            font-size: 1rem;
-            margin-bottom: 20px;
-            color: #bbb;
-        }
-
-        .portfolio-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .tag {
-            background: var(--gray);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            color: #aaa;
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-15px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-        }
-
-        .portfolio-item:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Contact Section */
-        .contact-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-        }
-
-        .contact-form .form-group {
-            margin-bottom: 25px;
-        }
-
-        .contact-form input,
-        .contact-form textarea {
-            width: 100%;
-            padding: 18px;
-            border: var(--border);
-            background: var(--darker);
-            font-family: inherit;
-            font-size: 1rem;
-            transition: var(--transition);
-            color: var(--white);
-            border-radius: 8px;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus {
-            outline: none;
-            border-color: rgba(255, 255, 255, 0.4);
-        }
-
-        .contact-form textarea {
-            min-height: 180px;
-            resize: vertical;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 35px;
-            background: var(--darker);
-            padding: 25px;
-            border-radius: 15px;
-            border: var(--border);
-            transition: var(--transition);
-        }
-
-        .contact-item:hover {
-            transform: translateY(-5px);
-            background: var(--gray);
-        }
-
-        .contact-icon {
-            font-size: 1.8rem;
-            margin-right: 20px;
-            min-width: 50px;
-            color: var(--white);
-        }
-
-        .contact-text h3 {
-            font-size: 1.3rem;
-            margin-bottom: 8px;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--darker);
-            padding: 60px 0 30px;
-            border-top: var(--border);
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 25px;
-        }
-
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: var(--gray);
-            color: var(--white);
-            font-size: 1.3rem;
-            transition: var(--transition);
-            border: var(--border);
-        }
-
-        .social-links a:hover {
-            background: var(--light-gray);
-            transform: translateY(-5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            font-size: 0.95rem;
-            color: #777;
-        }
-
-        /* Animations */
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
-
-        .floating {
-            animation: float 6s ease-in-out infinite;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 1100px) {
-            h1 {
-                font-size: 3.8rem;
-            }
-            
-            h2 {
-                font-size: 2.5rem;
-            }
-        }
-
-        @media (max-width: 900px) {
-            .about-content,
-            .contact-content {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-img {
-                max-width: 600px;
-                margin: 0 auto;
-            }
-
-            .hero-stats {
-                gap: 30px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            nav ul {
-                position: fixed;
-                top: 0;
-                right: -100%;
-                width: 280px;
-                height: 100vh;
-                background: var(--darker);
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: flex-start;
-                padding: 100px 40px;
-                transition: var(--transition);
-                z-index: 1000;
-                border-left: var(--border);
-            }
-            
-            nav ul.active {
-                right: 0;
-            }
-            
-            nav ul li {
-                margin: 20px 0;
-                width: 100%;
-            }
-
-            nav ul li a {
-                font-size: 1.2rem;
-                display: block;
-                padding: 10px 0;
-            }
-            
-            .hero-content {
-                text-align: center;
-            }
-            
-            .hero-buttons {
-                display: flex;
-                justify-content: center;
-                flex-wrap: wrap;
-            }
-
-            .hero-stats {
-                justify-content: center;
-            }
-            
-            .footer-content {
-                flex-direction: column;
-                gap: 40px;
-            }
-
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 3.2rem;
-            }
-        }
-
-        @media (max-width: 576px) {
-            h1 {
-                font-size: 2.8rem;
-            }
-            
-            h2 {
-                font-size: 2.2rem;
-            }
-            
-            .btn {
-                width: 100%;
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-
-            .hero-stats {
-                flex-direction: column;
-                gap: 25px;
-            }
-
-            .stat-item {
-                align-items: center;
-            }
-        }
-    </style>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- Background Effects -->
+    <div class="bg-grid"></div>
+    <div class="bg-overlay"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
     <!-- Header & Navigation -->
     <header>
         <div class="container header-content">
-            <a href="#" class="logo">PORTFOLIO</a>
+            <a href="#home" class="logo">
+                <i class="fas fa-gamepad logo-icon"></i>
+                BRAMASETIO
+            </a>
             <button class="mobile-menu-btn">
                 <i class="fas fa-bars"></i>
             </button>
@@ -666,27 +47,34 @@
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="container">
-            <div class="hero-content">
-                <h1> BRAMSETIO <span>GAME DEVELOPER STUDENT </span></h1>
-                <p>Saya membuat pengalaman digital yang memukau dengan fokus pada performa, responsivitas, dan desain yang intuitif. Setiap proyek adalah perjalanan unik menciptakan solusi yang tidak hanya indah tetapi juga fungsional.</p>
-                <div class="hero-buttons">
-                    <a href="#portfolio" class="btn">Explore Projects <i class="fas fa-arrow-right"></i></a>
-                    <a href="#contact" class="btn">Get in Touch <i class="fas fa-paper-plane"></i></a>
+            <div class="hero-content reveal">
+                <span class="hero-subtitle">HELLO, WORLD! I AM</span>
+                <div class="glitch-wrapper">
+                    <h1 class="glitch" data-text="BRAMASETIO">BRAMASETIO</h1>
+                </div>
+                <div class="typing-container">
+                    <span class="typing-text"></span><span class="cursor-blink">_</span>
+                </div>
+                <p>Saya menciptakan pengalaman digital interaktif yang memukau dengan fokus pada performa, responsivitas, dan desain futuristik. Setiap baris kode adalah langkah untuk membangun dunia baru.</p>
+                
+                <div class="btn-group">
+                    <a href="#portfolio" class="btn-neon">
+                        Explore Quests <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                    </a>
+                    <a href="#contact" class="btn-neon secondary">
+                        Start Co-op <i class="fas fa-paper-plane" style="margin-left: 10px;"></i>
+                    </a>
                 </div>
                 
                 <div class="hero-stats">
                     <div class="stat-item">
-                        <div class="stat-number">8</div>
-                        <div class="stat-label">Projects</div>
+                        <div class="stat-num"><span>08</span>+</div>
+                        <div class="stat-label">Projects Completed</div>
                     </div>
                     <div class="stat-item">
-                        <div class="stat-number">2</div>
-                        <div class="stat-label">Years Exp</div>
+                        <div class="stat-num"><span>02</span>+</div>
+                        <div class="stat-label">Years Experience</div>
                     </div>
-                    <!-- <div class="stat-item">
-                        <div class="stat-number">0</div>
-                        <div class="stat-label">Clients</div>
-                    </div> -->
                 </div>
             </div>
         </div>
@@ -695,40 +83,31 @@
     <!-- About Section -->
     <section id="about" class="section">
         <div class="container">
-            <h2>About Me</h2>
-            <div class="about-content">
+            <h2 class="section-title reveal">Player Profile</h2>
+            <div class="about-grid reveal">
                 <div class="about-text">
-                    <p>Hai, </p>
-                    <p>Perkenalkan nama saya Bramasetio Al Asyr, Saya berumur 17 Tahun.
-                         Saya sangat tertarik sekali dalam bidang Komputer/IT 
-                         Sejak saya kecil,dan saya telah mengembangkan kemampuan 
-                         saya dalam bidang ini. Terutama pda bidang <span>Game Develover, Web Develover, 
-                         Software Developer, Dan Desain Grafis.</span></p>
-
-                    <p>Dalam 2 Tahun terakhir ini. Saya telah membuat beberapa 
-                        project yang berhubungan dengan bidang yang saya kuasai 
-                        seperti membuat website, membuat game, membuat logo, 
-                        dan membuat poster.</p>
-                    <div class="skills">
-                        <span class="skill">C++</span>
-                        <span class="skill">Construct 3</span>
-                        <span class="skill">C#</span>
-                        <span class="skill">HTML5</span>
-                        <span class="skill">Javascript</span>
-                        <span class="skill">PHP</span>
-                        <span class="skill">Laravel</span>
-                        <span class="skill">Bootstrap 5</span>
-                        <span class="skill">MySQL</span>
-                        <span class="skill">Adobe Photoshop</span>
-                        <span class="skill">Adobe Premiere Pro</span>
-                        <span class="skill">Adobe Illustrator</span>
-                        <span class="skill">Figma</span>
-                        <span class="skill">Unity 2D</span>
-                        <span class="skill">Unity 3D</span>
+                    <p><span>Inisialisasi Sistem:</span> Hai, perkenalkan nama saya <span>Bramasetio Al Asyr</span>, berumur 17 tahun.</p>
+                    <p>Sejak kecil, saya memiliki ketertarikan mendalam pada dunia IT dan komputer. Ketertarikan ini mendorong saya untuk terus mengembangkan <i>skill tree</i> saya, khususnya di bidang <span>Game Development, Web Development, Software Engineering, dan Desain Grafis</span>.</p>
+                    <p>Dalam 2 tahun terakhir, saya telah berhasil mengeksekusi berbagai misi proyek mulai dari pembuatan website interaktif, pengembangan game 2D/3D, hingga perancangan logo dan poster.</p>
+                    
+                    <div class="skills-container">
+                        <h4 style="color: var(--accent-primary); margin-bottom: 15px; font-family: 'Space Grotesk', sans-serif;">Equipped Skills:</h4>
+                        <div class="skills-wrapper">
+                            <span class="skill-tag">Unity 2D/3D</span>
+                            <span class="skill-tag">C#</span>
+                            <span class="skill-tag">C++</span>
+                            <span class="skill-tag">Construct 3</span>
+                            <span class="skill-tag">HTML/CSS/JS</span>
+                            <span class="skill-tag">PHP</span>
+                            <span class="skill-tag">Laravel</span>
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">Figma</span>
+                            <span class="skill-tag">Adobe CC</span>
+                        </div>
                     </div>
                 </div>
-                <div class="about-img floating">
-                    <img src="assets/img/Myself_v2.jpg" alt="Web Developer Profile">
+                <div class="about-image-wrapper">
+                    <img src="assets/img/Myself_v2.jpg" alt="Bramasetio Profile" class="about-image">
                 </div>
             </div>
         </div>
@@ -737,234 +116,170 @@
     <!-- Portfolio Section -->
     <section id="portfolio" class="section">
         <div class="container">
-            <h2>Featured Work</h2>
+            <h2 class="section-title reveal">Mission Archives</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/SURNAME.png" alt="Surname_Game">
+                <!-- Project 1 -->
+                <div class="project-card reveal">
+                    <div class="project-img">
+                        <img src="assets/img/SURNAME.png" alt="SURNAME">
                     </div>
-                    <div class="portfolio-content">
-                        <h3>SURNAME</h3>
-                        <p>Game ini dibuat untuk tugas sekolah saya. </p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Construct 3</span>
-                            <span class="tag">Javascript</span>
+                    <div class="project-content">
+                        <h3 class="project-title">SURNAME</h3>
+                        <p class="project-desc">Game edukasi inovatif yang dirancang untuk tugas sekolah, menggabungkan mekanik permainan menarik dengan pembelajaran.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Construct 3</span>
+                            <span class="tech-tag">Javascript</span>
                         </div>
-                         <a href="https://bramase12.github.io/SURNAME" target="_blank" class="btn">Go To Preview <i class="fas fa-arrow-right"></i></a>
+                        <div class="project-links">
+                            <a href="https://bramase12.github.io/SURNAME" target="_blank" class="project-link">Launch Game <i class="fas fa-external-link-alt"></i></a>
+                        </div>
                     </div>
                 </div>
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/Fufastore.png" alt="Fufastore_Web">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>FUFASTORE</h3>
-                        <p>project kelompok sekolah pertama saya. </p>
-                        <div class="portfolio-tags">
-                            
-                            <span class="tag">PHP</span>
-                            <span class="tag">Bootstrap 5</span>
-                            <span class="tag">MySQL</span>
-                        </div>
-                         <a href="https://github.com/bramase12/galvinbaik" target="_blank" class="btn">Go To Preview <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-    
 
-                
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/Simplecrud.png" alt="Simplecrud_Web">
+                <!-- Project 2 -->
+                <div class="project-card reveal">
+                    <div class="project-img">
+                        <img src="assets/img/Astronomaze.png" alt="Astronomaze">
                     </div>
-                    <div class="portfolio-content">
-                        <h3>SIMPLECRUD</h3>
-                        <p>Project CRUD PHP Native.</p>
-                        <div class="portfolio-tags">
-                            
-                            <span class="tag">PHP</span>
-                            <span class="tag">Bootstrap 5</span>
-                            <span class="tag">MySQL</span>
+                    <div class="project-content">
+                        <h3 class="project-title">ASTRONOMAZE</h3>
+                        <p class="project-desc">Game bertema edukasi luar angkasa dan eksplorasi labirin yang menantang pemain dengan teka-teki galaksi.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Construct 3</span>
+                            <span class="tech-tag">Javascript</span>
                         </div>
-                         <a href="https://github.com/bramase12/mycrud" target="_blank" class="btn">Go To Preview <i class="fas fa-arrow-right"></i></a>
+                        <div class="project-links">
+                            <a href="https://bramasetio.itch.io/astronomaze" target="_blank" class="project-link">Launch Game <i class="fas fa-external-link-alt"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/Galcalbu.png" alt="Galcalbu">
+                <!-- Project 3 -->
+                <div class="project-card reveal">
+                    <div class="project-img">
+                        <img src="assets/img/Fuaizspace.png" alt="Fuaizspace">
                     </div>
-                    <div class="portfolio-content">
-                        <h3>GALCALBU</h3>
-                        <p>Project Akhir LATIKA</p>
-                        <div class="portfolio-tags"> 
-                            <span class="tag">PYTHON</span>
+                    <div class="project-content">
+                        <h3 class="project-title">FUAIZSPACE</h3>
+                        <p class="project-desc">3D Space Shooter Game dengan grafis dinamis dan aksi intens dalam mempertahankan markas luar angkasa.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Unity 3D</span>
+                            <span class="tech-tag">C#</span>
                         </div>
-                         <a href="https://github.com/bramase12/Galcalbu/blob/master/Galcalbu.py" target="_blank" class="btn">Go To Preview <i class="fas fa-arrow-right"></i></a>
+                        <div class="project-links">
+                            <a href="https://bramasetio.itch.io/fuaizspace" target="_blank" class="project-link">Launch Game <i class="fas fa-external-link-alt"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/Astronomaze.png" alt="Astronomaze_Game">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>ASTRONOMAZE</h3>
-                        <p>Game bertema edukasi dan labirin.</p>
-                        <div class="portfolio-tags"> 
-                            <span class="tag">Construct 3</span>
-                            <span class="tag">Javascript</span>
-                        </div>
-                         <a href="https://bramasetio.itch.io/astronomaze" target="_blank" class="btn">Go To Preview <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
+                <!-- Project 4 -->
+                <div class="project-card reveal">
+                    <div class="project-img">
                         <img src="assets/img/Forplat.png" alt="Forplat">
                     </div>
-                    <div class="portfolio-content">
-                        <h3>FORPLAT</h3>
-                        <p>2D Platformer</p>
-                        <div class="portfolio-tags"> 
-                            <span class="tag">Unity 2D</span>
+                    <div class="project-content">
+                        <h3 class="project-title">FORPLAT</h3>
+                        <p class="project-desc">2D Platformer yang menantang kelincahan pemain melintasi berbagai rintangan platform klasik.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Unity 2D</span>
+                            <span class="tech-tag">C#</span>
                         </div>
-                         <a href="https://bramasetio.itch.io/forplatdemo" target="_blank" class="btn">Go To Preview <i class="fas fa-arrow-right"></i></a>
+                        <div class="project-links">
+                            <a href="https://bramasetio.itch.io/forplatdemo" target="_blank" class="project-link">Launch Game <i class="fas fa-external-link-alt"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/Supanikmath.jpeg" alt="Supanikmath">
+                <!-- Project 5 -->
+                <div class="project-card reveal">
+                    <div class="project-img">
+                        <img src="assets/img/Fufastore.png" alt="Fufastore">
                     </div>
-                    <div class="portfolio-content">
-                        <h3>SUPANIKMATH</h3>
-                        <p>Educational 2D Platformer</p>
-                        <div class="portfolio-tags"> 
-                            <span class="tag">Unity 2D</span>
+                    <div class="project-content">
+                        <h3 class="project-title">FUFASTORE</h3>
+                        <p class="project-desc">Platform e-commerce tugas kolaboratif pertama, dengan sistem manajemen inventaris dan pengguna.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Bootstrap 5</span>
                         </div>
-                         <a href="https://bramasetio.itch.io/supanikmath" target="_blank" class="btn">Go To Preview <i class="fas fa-arrow-right"></i></a>
+                        <div class="project-links">
+                            <a href="https://github.com/bramase12/galvinbaik" target="_blank" class="project-link">View Source <i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="assets/img/Fuaizspace.png" alt="Fuaizspace_Game">
+                <!-- Project 6 -->
+                <div class="project-card reveal">
+                    <div class="project-img">
+                        <img src="assets/img/Galcalbu.png" alt="Galcalbu">
                     </div>
-                    <div class="portfolio-content">
-                        <h3>FUAIZSPACE</h3>
-                        <p>3D Space Shooter Game</p>
-                        <div class="portfolio-tags"> 
-                            <span class="tag">Unity 3D</span>
+                    <div class="project-content">
+                        <h3 class="project-title">GALCALBU</h3>
+                        <p class="project-desc">Aplikasi utilitas kalkulator yang dibangun menggunakan Python sebagai proyek akhir LATIKA.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Python</span>
                         </div>
-                         <a href="https://bramasetio.itch.io/fuaizspace" target="_blank" class="btn">Go To Preview <i class="fas fa-arrow-right"></i></a>
+                        <div class="project-links">
+                            <a href="https://github.com/bramase12/Galcalbu/blob/master/Galcalbu.py" target="_blank" class="project-link">View Source <i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                 </div>
             </div>
-                
-                 <!-- <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1463171379579-3fdfb86d6285?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Finance Dashboard">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Financial Analytics</h3>
-                        <p>Dashboard analisis keuangan real-time dengan visualisasi data interaktif untuk perusahaan fintech.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Vue.js</span>
-                            <span class="tag">D3.js</span>
-                            <span class="tag">Firebase</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <div class="portfolio-img">
-                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Travel App">
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Travel Experience</h3>
-                        <p>Aplikasi perjalanan dengan fitur augmented reality untuk menjelajahi destinasi sebelum berkunjung.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">React Native</span>
-                            <span class="tag">Three.js</span>
-                            <span class="tag">GraphQL</span>
-                        </div>
-                    </div>
-                </div>  -->
-            <!-- </div> -->
         </div>
     </section>
 
     <!-- Contact Section -->
     <section id="contact" class="section">
         <div class="container">
-            <h2>Get In Touch</h2>
-            <div class="contact-content">
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <input type="text" placeholder="Full Name" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="Email Address" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="text" placeholder="Subject" required>
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Your Message" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
-                    </form>
-                </div>
+            <h2 class="section-title reveal">Establish Connection</h2>
+            <div class="contact-wrapper reveal">
                 <div class="contact-info">
-                    <div class="contact-item">
+                    <div class="contact-info-item">
                         <div class="contact-icon">
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div class="contact-text">
-                            <h3>Location</h3>
-                            <p>Nganjuk, Indonesia</p>
+                            <h4>Base Coordinates</h4>
+                            <p>Nganjuk, East Java, Indonesia</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-info-item">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div class="contact-text">
-                            <h3>Email</h3>
+                            <h4>Direct COM</h4>
                             <p>bramasetioal@gmail.com</p>
                         </div>
                     </div>
-                    <div class="contact-item">
+                    <div class="contact-info-item">
                         <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
+                            <i class="fab fa-instagram"></i>
                         </div>
                         <div class="contact-text">
-                            <h3>Instagram</h3>
+                            <h4>Social Channel</h4>
                             <p>@brmstasyr.eps</p>
                         </div>
                     </div>
-                    <!-- <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-clock"></i>
+                </div>
+                
+                <div class="contact-form">
+                    <form onsubmit="event.preventDefault(); alert('Message transmitted successfully! [Demo Mode]');">
+                        <div class="form-group">
+                            <input type="text" placeholder="Your Name [Callsign]" required>
                         </div>
-                        <div class="contact-text">
-                            <h3>Working Hours</h3>
-                            <p>Mon-Fri: 9AM - 6PM</p>
-                        </div> -->
-                    <!-- </div> -->
+                        <div class="form-group">
+                            <input type="email" placeholder="Your Email [Frequency]" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" placeholder="Subject [Mission Brief]" required>
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Message Payload..." required></textarea>
+                        </div>
+                        <button type="submit" class="btn-neon">Transmit Signal <i class="fas fa-satellite-dish" style="margin-left: 10px;"></i></button>
+                    </form>
                 </div>
             </div>
         </div>
@@ -973,102 +288,21 @@
     <!-- Footer -->
     <footer>
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-logo">
-                    <a href="#" class="logo">PORTFOLIO</a>
-                    <p style="margin-top: 15px; color: #777;">Creating digital experiences that matter</p>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.instagram.com/brmstasyr/" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://www.youtube.com/@bramasetio" target="_blank"><i class="fab fa-youtube"></i></a>
-                    <a href="https://www.linkedin.com/in/bramasetio-al-asyr-baba84303/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://github.com/bramase12" target="_blank"><i class="fab fa-github"></i></a>
-                </div>
+            <div class="social-links">
+                <a href="https://www.instagram.com/brmstasyr/" target="_blank" class="social-link"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/@bramasetio" target="_blank" class="social-link"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/in/bramasetio-al-asyr-baba84303/" target="_blank" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/bramase12" target="_blank" class="social-link"><i class="fab fa-github"></i></a>
+                <a href="https://bramasetio.itch.io/" target="_blank" class="social-link"><i class="fab fa-itch-io"></i></a>
             </div>
             <div class="copyright">
-                <p>&copy; 2026 Bramasetio Portfolio. All rights reserved.</p>
+                <p>&copy; 2026 Bramasetio. All systems operational.</p>
             </div>
         </div>
     </footer>
 
-    <script>
-        // Mobile Navigation Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const navMenu = document.querySelector('nav ul');
-
-        mobileMenuBtn.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-            
-            // Change icon based on menu state
-            const icon = mobileMenuBtn.querySelector('i');
-            if (navMenu.classList.contains('active')) {
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-times');
-            } else {
-                icon.classList.remove('fa-times');
-                icon.classList.add('fa-bars');
-            }
-        });
-
-        // Close menu when clicking a link
-        const navLinks = document.querySelectorAll('nav ul li a');
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-                mobileMenuBtn.querySelector('i').classList.remove('fa-times');
-                mobileMenuBtn.querySelector('i').classList.add('fa-bars');
-                document.body.style.overflow = '';
-            });
-        });
-
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-
-        // Header scroll effect
-        window.addEventListener('scroll', () => {
-            const header = document.querySelector('header');
-            if (window.scrollY > 50) {
-                header.style.backgroundColor = 'rgba(10, 10, 10, 0.9)';
-                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.5)';
-            } else {
-                header.style.backgroundColor = 'var(--glass)';
-                header.style.boxShadow = 'none';
-            }
-        });
-
-        // Portfolio item animation on scroll
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-        
-        const portfolioObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = 1;
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        portfolioItems.forEach(item => {
-            item.style.opacity = 0;
-            item.style.transform = 'translateY(50px)';
-            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            portfolioObserver.observe(item);
-        });
-    </script>
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="assets/js/main.js"></script>
 </body>
 </html>
