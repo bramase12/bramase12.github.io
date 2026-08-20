@@ -15,6 +15,17 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
+    <!-- Intro Overlay -->
+    <div id="intro-screen">
+        <div class="intro-content">
+            <div class="intro-logo"><i class="fas fa-terminal"></i></div>
+            <div class="intro-text-wrapper">
+                <span class="intro-typing"></span><span class="intro-cursor">_</span>
+            </div>
+            <div class="loading-bar"><div class="loading-progress"></div></div>
+        </div>
+    </div>
+
     <!-- Background Effects -->
     <div class="bg-grid"></div>
     <div class="bg-overlay"></div>
@@ -46,7 +57,7 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="container">
+        <div class="container hero-grid">
             <div class="hero-content reveal">
                 <span class="hero-subtitle">HELLO, WORLD! I AM</span>
                 <div class="glitch-wrapper">
@@ -75,6 +86,19 @@
                         <div class="stat-num"><span>02</span>+</div>
                         <div class="stat-label">Years Experience</div>
                     </div>
+                </div>
+            </div>
+            <div class="hero-visual reveal">
+                <div class="hologram-wrapper">
+                    <div class="hologram-cube">
+                        <div class="cube-face front"><i class="fas fa-gamepad"></i></div>
+                        <div class="cube-face back"></div>
+                        <div class="cube-face right"></div>
+                        <div class="cube-face left"></div>
+                        <div class="cube-face top"></div>
+                        <div class="cube-face bottom"></div>
+                    </div>
+                    <div class="hologram-shadow"></div>
                 </div>
             </div>
         </div>
@@ -265,18 +289,20 @@
                 </div>
                 
                 <div class="contact-form">
-                    <form onsubmit="event.preventDefault(); alert('Message transmitted successfully! [Demo Mode]');">
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                        <input type="hidden" name="subject" value="New Mission Request from Portfolio">
                         <div class="form-group">
-                            <input type="text" placeholder="Your Name [Callsign]" required>
+                            <input type="text" name="name" placeholder="Your Name [Callsign]" required>
                         </div>
                         <div class="form-group">
-                            <input type="email" placeholder="Your Email [Frequency]" required>
+                            <input type="email" name="email" placeholder="Your Email [Frequency]" required>
                         </div>
                         <div class="form-group">
-                            <input type="text" placeholder="Subject [Mission Brief]" required>
+                            <input type="text" name="mission_subject" placeholder="Subject [Mission Brief]" required>
                         </div>
                         <div class="form-group">
-                            <textarea placeholder="Message Payload..." required></textarea>
+                            <textarea name="message" placeholder="Message Payload..." required></textarea>
                         </div>
                         <button type="submit" class="btn-neon">Transmit Signal <i class="fas fa-satellite-dish" style="margin-left: 10px;"></i></button>
                     </form>

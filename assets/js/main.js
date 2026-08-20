@@ -1,4 +1,37 @@
 document.addEventListener('DOMContentLoaded', () => {
+    /* --- Intro Boot Sequence --- */
+    const introScreen = document.getElementById('intro-screen');
+    const introTyping = document.querySelector('.intro-typing');
+    
+    if (introScreen && introTyping) {
+        const bootText = "SYSTEM INITIALIZING... WELCOME BRAMASETIO.";
+        let charIndex = 0;
+        
+        function typeBootText() {
+            if (charIndex < bootText.length) {
+                introTyping.textContent += bootText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeBootText, 50); // Typing speed
+            } else {
+                // Wait for loading bar to finish (approx 2.5s total), then fade out
+                setTimeout(() => {
+                    introScreen.classList.add('hidden');
+                    // Remove from DOM after fade out transition (1s)
+                    setTimeout(() => {
+                        introScreen.style.display = 'none';
+                        document.body.style.overflow = 'auto'; // Re-enable scroll if disabled
+                    }, 1000);
+                }, 1000);
+            }
+        }
+        
+        // Disable scroll during intro
+        document.body.style.overflow = 'hidden';
+        
+        // Start typing after a tiny delay
+        setTimeout(typeBootText, 300);
+    }
+
     /* --- Custom Cursor --- */
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorOutline = document.querySelector('.cursor-outline');
